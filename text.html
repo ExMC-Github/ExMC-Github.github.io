@@ -1,0 +1,31 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title></title>  
+    <script>  
+        // 当文档加载完成后  
+        window.onload = function() {  
+            // 获取URL中的查询字符串参数  
+            function getParameterByName(name, url = window.location.href) {  
+                name = name.replace(/[\[\]]/g, '\\$&');  
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),  
+                    results = regex.exec(url);  
+                if (!results) return null;  
+                if (!results[2]) return '';  
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));  
+            }  
+  
+            // 获取text参数  
+            var text = getParameterByName('text');  
+  
+            // 显示text参数  
+            document.getElementById('text-display').textContent = text || '';  
+        };  
+    </script>  
+</head>  
+<body>  
+    <p id="text-display"></p>  
+</body>  
+</html>
